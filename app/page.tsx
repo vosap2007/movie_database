@@ -1,27 +1,22 @@
 // import styles from "./page.module.css";
-"use client";
+// "use client";
 
-const API_KEY = "bb5e0d9156d1e4a8c96f5f13497bf1d5";
-const API_Read_Access_Token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYjVlMGQ5MTU2ZDFlNGE4Yzk2ZjVmMTM0OTdiZjFkNSIsInN1YiI6IjY0YjAwOTIzZTI0YjkzNWIzMGEyZjUxMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.51FRsKAllK9N5ftGWYyq0JcZdZxPOTC3qRXvLJv9tVA";
-
-const getMovies = async () => {
-  const response = await fetch(
-    "https://api.themoviedb.org/3/movie/550?api_key=bb5e0d9156d1e4a8c96f5f13497bf1d5"
-  );
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  return response.json();
-};
+import { IMG_API } from "@/api/Api";
+import { getMovies } from "@/api/getMovies";
+import Movie from "@/components/Movie";
+import { IMovie } from "@/types/HomeTypes";
 
 const Movies = async () => {
   const data = await getMovies();
-  console.log("data", data);
 
-  return <h1>Movies</h1>;
+  return (
+    <>
+      <h1>Movies</h1>
+      {data.results.map((result: IMovie) => {
+        return <Movie data={result} key={result.id} />;
+      })}
+    </>
+  );
 };
 
 export default Movies;
