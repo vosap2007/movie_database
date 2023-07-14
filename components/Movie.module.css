@@ -1,0 +1,23 @@
+.container {
+  padding: 20px 10px;
+  list-style: none;
+  background: #2f425f47;
+  border-radius: 6px;
+}
+
+.title {
+  margin-bottom: 30px;
+  color: #e8e8e8;
+}
+
+.main_block {
+  display: flex;
+  gap: 40px;
+}
+
+.params {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: gray;
+}

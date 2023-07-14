@@ -1,10 +1,9 @@
-// import styles from "./page.module.css";
 // "use client";
-
 import { IMG_API } from "@/api/Api";
 import { IMovie } from "@/types/HomeTypes";
+import styles from "./Movie.module.css";
 
-const Movie = ({ data }: IMovie) => {
+const Movie = ({ data }: any) => {
   const {
     title,
     poster_path,
@@ -15,14 +14,18 @@ const Movie = ({ data }: IMovie) => {
   } = data;
 
   return (
-    <>
-      <h2>{title}</h2>
-      <img src={IMG_API + poster_path} alt={title} />
-      <p>Rating: {vote_average}</p>
-      <p>Release date: {release_date}</p>
-      <p>Language: {original_language}</p>
-      <p>{overview}</p>
-    </>
+    <li className={styles.container}>
+      <h2 className={styles.title}>{title}</h2>
+      <div className={styles.main_block}>
+        <img src={IMG_API + poster_path} alt={title} />
+        <div className={styles.params}>
+          <p>Rating: {vote_average}</p>
+          <p>Release date: {release_date}</p>
+          <p>Language: {original_language}</p>
+          <p>{overview}</p>
+        </div>
+      </div>
+    </li>
   );
 };
 
